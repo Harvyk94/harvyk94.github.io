@@ -105,8 +105,8 @@ tr:nth-child(even) {
   </tr>
 </table></div>
         </div>
-    <div id="Networks",class='center-div'><div class='text-div'><h2>Head To Head</h2>
-        <p align=justify>These Network Graphs shows the head to head against each player. The Outgoing Arrows indicate that the player has more wins than losses against another player that the arrow leads to. Overall, the player with the more incoming arrows would indicate that on a Grand Slam level that player loses more often. Size indicates number of matches played on a particular surface. Edge Length indicates the total number of matches played against the player. Edge width indicates the total number of wins against the player. Color relates to surface.
+    <div id="Networks",class='center-div'><div class='text-div'><h2>Player Rivalries</h2>
+        <p align=justify>These Network Graphs shows the head to head against each player, which allows you to explore player rivalries! The Outgoing Arrows indicate that the player has more wins than losses against another player that the arrow leads to. Overall, the player with the more incoming arrows would indicate that on a Grand Slam level that player loses more often. Size indicates number of matches played on a particular surface. Edge Length indicates the total number of matches played against the player. Edge width indicates the total number of wins against the player. Color relates to surface.
         
         <p>Drag and Drop to reveal closer connections!</p><p> To reset, simply toggle the surfaces. <b>If it is stuck on the top left corner</b>, simply click on a node and it will populate the space!</p>
         
@@ -458,8 +458,9 @@ var svgLegend = d3.select("#Serves")
           "translate(" + margin.left + "," + margin.top + ")");
 
     d3.csv("https://raw.githubusercontent.com/Harvyk94/Datasets/master/ServeDataExtra.csv", function(error,data) {
-
+        
         if (error) {console.log(error)}
+        var playersDict={'Roger Federer': 'R.F','Rafael Nadal': 'R.N','Andy Murray':'A.M','John Isner': 'J.I'}
 
         // List of groups (here I have one group per column)
 
@@ -569,7 +570,7 @@ function getSize(d) {
           .attr("cy", function (d) { return y(d.WinRatio); } )
           .attr("r", function (d) { return Math.abs(rad(d.MatchCount))})
           .style("fill", function (d) { return myColor(d.surface); })
-          .attr('opacity',0.8)        
+          .attr('opacity',0.8)
         .on("mouseover", tipMouseover)
         .on("mouseout", tipMouseout)
 
