@@ -75,7 +75,8 @@ tr:nth-child(even) {
     <div class='center-div'>
         <div id='Introduction',class='center-div'><div class='text-div'><h1 align='center'>The Big Four: Visualising Their Dominance</h1>
             <h2>Introduction</h2>
-            <p align=justify> With the conclusion of the French Open 2019 on June 9th. Rafael Nadal has won a total of 12 French Open titles. Starting from the 2004 Wimbledon to the 2019 Australian Open, they have shared a total of 54 out of the last 60 men’s major singles titles and have appeared in all the major finals apart from the 2005 Australian Open and the 2014 US Open. They also have the top four prize money leaders of all time as well as a litany <a href="https://en.wikipedia.org/wiki/Big_Four_(tennis)#Combined_achievements">other records</a>. Throughout the history of tennis, no four have dominated tennis or achieved success the way the Big Four has. This presentation hence aims to visualise their rivalries with other players on tour, their individual dominance on both aspects of tennis, serves and returns.</p>
+            <p align=justify> In the world of sports, the term “Big Four” is used to describe the sheer dominance of 4 individuals, Roger Federer, Rafael Nadal, Novak Djokovic and Andy Murray in tennis. With the conclusion of the French Open 2019 on June 9th. Rafael Nadal has won a grand total of 12 French Open titles. Starting from the 2004 Wimbledon to the 2019 Australian Open, they have shared a total of 54 out of the last 60 men’s major singles titles and have appeared in all the major finals apart from the 2005 Australian Open and the 2014 US Open. They also have the top four prize money leaders of all time as well as a litany <a href="https://en.wikipedia.org/wiki/Big_Four_(tennis)#Combined_achievements">other records</a>. Throughout the history of tennis, no four have dominated tennis or achieved success the way the Big Four has. This presentation hence aims to visualise their rivalries with other players on tour, their individual dominance on both aspects of tennis, serves and returns.</p>
+            <h4>The Big Four</h4>
             <table>
 <tr>
     <th>Players</th>
@@ -102,11 +103,6 @@ tr:nth-child(even) {
     <td>3</td>
      <td>11</td>
   </tr>
-                <tr>
-                    <td><a href='https://en.wikipedia.org/wiki/Stan_Wawrinka'>Stan Wawrinka</a></td>
-    <td>3</td>
-    <td>4</td>
-  </tr>
 </table></div>
         </div>
     <div id="Networks",class='center-div'><div class='text-div'><h2>Head To Head</h2>
@@ -126,6 +122,7 @@ tr:nth-child(even) {
 <script src="https://d3js.org/d3-selection-multi.v1.js"></script>
 
 <script type="text/javascript">
+    var playersDict={'Roger Federer': 'R.F','Rafael Nadal': 'R.N','Andy Murray':'A.M','John Isner': 'J.I'}
     var surfaces = ['All','Clay','Grass','Hard']
     // Populate Button
     d3.select("#selectButtonSurfaceNetworks")
@@ -555,6 +552,12 @@ var svgLegend = d3.select("#Serves")
     };
 
 
+function getSize(d) {
+  var bbox = this.getBBox(),
+      cbbox = this.parentNode.getBBox(),
+      scale = Math.min(cbbox.width/bbox.width, cbbox.height/bbox.height);
+  d.scale = scale;
+}
     // Add dots
       var dots=svgServe.append('g')
         .selectAll("dot")
@@ -566,11 +569,9 @@ var svgLegend = d3.select("#Serves")
           .attr("cy", function (d) { return y(d.WinRatio); } )
           .attr("r", function (d) { return Math.abs(rad(d.MatchCount))})
           .style("fill", function (d) { return myColor(d.surface); })
-          .attr('opacity',0.8)
-            // -3- Trigger the functions
+          .attr('opacity',0.8)        
         .on("mouseover", tipMouseover)
         .on("mouseout", tipMouseout)
-
 
     // A function that update the chart (For Calling on Surface then X axis)
         var changesurface=function updateSurface(selectedSurface) {
@@ -792,7 +793,8 @@ function percentagechange(selectedSurface){
 
     <li>Rafael Nadal and Djokovic are <b>THE BEST</b> on returns, winning around 35% of opponents service games while returning. </li>
     <li>Murray , Djokovic and Nadal capitalises heavily on opponnents second serves, winning them 50% of the time. </li>
-    <li>Federer is the weakest on returns amongst the Big Four</li></div>
+    <li>Federer is the weakest on returns amongst the Big Four</li>
+    <li>While Isner has one of the best serves on tour, his return game is one of the weakest.</li></div>
     
 
     <!-- Initialize a select button -->
