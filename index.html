@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> Tennis Data Visualisation </title>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <style>
+            svg {
+    display: block;
+    margin: 0 auto;
+}
+        body {
+            font: 16px Calibri;
+        }
+        select {
+            display: block;
+            margin: 0 auto;
+        }
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #;
+            shape-rendering: crispEdges;
+        }
+        .tooltip {
+        position: absolute;
+        font-size: 12px;
+        width:  auto;
+        height: auto;
+        pointer-events: none;
+        background-color: white;
+    }
+
+.bubbles {
+  stroke-width: 2px;
+  stroke: white;
+}
+.bubbles:hover {
+  stroke: black;
+}
+.center-div
+{
+     margin: 0 auto;
+     max-width: 1280px;
+     width:80%;
+}
+.text-div
+{
+     margin: 0 auto;
+     max-width: 1280px;
+     width:80%;
+}
+table {
+  font-family: Calibri, Calibri;
+  border-collapse: collapse;
+    max-width: 1024px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+        </style>
+    </head>
+<script src="http://d3js.org/d3.v4.min.js" type="text/javascript"></script>
+<script src="http://d3js.org/d3-selection-multi.v1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.3.2/d3-annotation.js"></script>
+    <div class='center-div'>
+        <div id='Introduction',class='center-div'><div class='text-div'><h1 align='center'>The Big Four: Visualising Their Dominance</h1>
+            <h2>Introduction</h2>
+            <p align=justify> With the conclusion of the French Open 2019 on June 9th. Rafael Nadal has won a total of 12 French Open titles. Starting from the 2004 Wimbledon to the 2019 Australian Open, they have shared a total of 54 out of the last 60 men’s major singles titles and have appeared in all the major finals apart from the 2005 Australian Open and the 2014 US Open. They also have the top four prize money leaders of all time as well as a litany <a href="https://en.wikipedia.org/wiki/Big_Four_(tennis)#Combined_achievements">other records</a>. Throughout the history of tennis, no four have dominated tennis or achieved success the way the Big Four has. This presentation hence aims to visualise their rivalries with other players on tour, their individual dominance on both aspects of tennis, serves and returns.</p>
+            <table>
+<tr>
+    <th>Players</th>
+    <th>Grand Slam Titles</th>
+    <th>Finals</th>
+  </tr>
+  <tr>
+      <td><a href=https://en.wikipedia.org/wiki/Roger_Federer>Roger Federer</a></td>
+    <td>20</td>
+      <td>30</td>
+  </tr>
+  <tr>
+      <td><a href=https://en.wikipedia.org/wiki/Rafael_Nadal>Rafael Nadal</a></td>
+    <td>18</td>
+      <td>26</td>
+  </tr>
+  <tr>
+      <td><a href=https://en.wikipedia.org/wiki/Novak_Djokovi%C4%87>Novak Djokovic</a></td>
+    <td>15</td>
+      <td>24</td>
+  </tr>
+ <tr>
+    <td><a href='https://en.wikipedia.org/wiki/Andy_Murray'>Andy Murray</a></td>
+    <td>3</td>
+     <td>11</td>
+  </tr>
+                <tr>
+                    <td><a href='https://en.wikipedia.org/wiki/Stan_Wawrinka'>Stan Wawrinka</a></td>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+</table></div>
+        </div>
+    <div id="Networks",class='center-div'><div class='text-div'><h2>Head To Head</h2>
+        <p align=justify>These Network Graphs shows the head to head against each player. The Outgoing Arrows indicate that the player has more wins than losses against another player that the arrow leads to. Overall, the player with the more incoming arrows would indicate that on a Grand Slam level that player loses more often. Size indicates number of matches played on a particular surface. Edge Length indicates the total number of matches played against the player. Edge width indicates the total number of wins against the player. Color relates to surface.
+        
+        <p>Drag and Drop to reveal closer connections!</p><p> To reset, simply toggle the surfaces. <b>If it is stuck on the top left corner</b>, simply click on a node and it will populate the space!</p>
+        
+        <h3>Big Four</h3>
+        
+        <li>For all of Grand Slam level Tournaments from 2011 to 2018, Djokovic was simply put untouchable! He had a positive win rate on all players across all surfaces. </li>
+        <li>Nadal remains untouchable on clay! But loses to Djokovic on other surfaces </li>
+        <li>Federer only has a losing record against 2 other players, Djokovic and Nadal </li>
+        <li>Murray's main competitor? Djokovic, he has lost to Djokovic 8 times and only won twice! </li>
+        </div><div class='text-div'><select id="selectButtonSurfaceNetworks"></select></div></div>
+
+<script src="http://d3js.org/d3.v4.min.js" type="text/javascript"></script>
+<script src="http://d3js.org/d3-selection-multi.v1.js"></script>
+
+<script type="text/javascript">
+    var surfaces = ['All','Clay','Grass','Hard']
+    // Populate Button
+    d3.select("#selectButtonSurfaceNetworks")
+      .selectAll('myOptions')
+        .data(surfaces)
+      .enter()
+        .append('option')
+      .text(function (d) { return d; }) // text showed in the menu
+    var margin = {top: 20, right:40 , bottom: 60, left: 20},
+    width = 800- margin.left - margin.right,
+    height =600- margin.top - margin.bottom;
+   var svgNetwork= d3.select("#Networks")
+                      .append("svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                      .append("g")
+                        .attr("transform",
+                              "translate(" + margin.left + "," + margin.top + ")");
+
+    svgNetwork.append("svg:defs").selectAll("marker")
+    .data(["end"])      // Different link/path types can be defined here
+    .enter().append("svg:marker")    // This section adds in the arrows
+    .attr("id", String)
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 13)
+    .attr("refY", 0)
+    .attr("markerWidth", 3.5)
+    .attr("markerHeight", 3.5)
+    .attr("orient", "auto")
+    .append("svg:path")
+    .attr("d", "M0,-5L10,0L0,5")
+    .style('stroke','none')
+    .style('fill','#999')
+    .style("opacity", 1)
+
+    var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function (d) {return d.id;}).distance(function(d){return (d.WinCount+d.LossesCount)*35}).strength(1))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(width / 2, height / 2))
+        .force("collide",
+      d3.forceCollide()
+          .radius(function(d) { return d.r + 1 })
+          .iterations(100))
+        .force("charge", d3.forceManyBody().strength(-300))
+        .force("r",
+          d3.forceRadial()
+          .radius(200)
+          .x(width / 2)
+          .y(height / 2)
+          .strength(1)
+    );
+    var changeSurfaceNetworks = function changeSurfaceNetworks(selectedSurface){
+        svgNetwork.selectAll(".link").remove();//add this to remove the links
+        svgNetwork.selectAll(".node").remove();
+        
+    d3.json("https://raw.githubusercontent.com/Harvyk94/Datasets/master/h2hNew.json", function (error, graph) {
+        if (error) throw error;
+        update(graph[selectedSurface].links, graph[selectedSurface].nodes);
+    })}
+    
+    // When the button is changed, run the updateChart function
+    d3.select("#selectButtonSurfaceNetworks").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    changeSurfaceNetworks(selectedOption)})
+    
+    var colors = d3.scaleOrdinal()
+          .domain(['All','Clay','Grass','Hard'])
+          .range(['#ffa07a','#C83900','#7cfc00','#0297DB']);
+    
+    var tooltip = d3.select("#Networks").append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0);
+    function update(links, nodes) {
+        
+        function neighboring(a, b) {
+    return links.some(function(d) {
+    return (d.source === a && d.target === b)
+        || (d.source === b && d.target === a);
+  });
+}
+    var tootipsurfacedict = {'All': 'All Surfaces', 'Clay':'Clay Surface', 'Grass':'Grass Surface','Hard':"Hard Surface"}
+        
+            var tipMouseoverNodes = function(d) {
+
+                  var color = colors(d.surface);
+                  var html  = `Player: ${d.id}` + "<br/>" +
+                            "<span><b>" + `${d.size} `+ '</b>' +`Matches Played on ${tootipsurfacedict[d.surface]}` + '</span><br/>';
+
+                  tooltip.html(html)
+                      .style("left", (d3.event.pageX + 15) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px")
+                    .transition()
+                      .duration(200) // ms
+                      .style("opacity", .9) // started as 0!
+
+                };
+            var tipMouseoverLinks = function(d) {
+
+                  var color = colors(d.surface);
+                  var html  = `Player: ${d.source}\nWins Against ${d.target}: ${d.WinCount} \nLosses Against ${d.target}: ${d.LossesCount}`;
+
+                  tooltip.html(html)
+                      .style("left", (d3.event.pageX + 15) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px")
+                    .transition()
+                      .duration(200) // ms
+                      .style("opacity", .9) // started as 0!
+
+                };
+                // tooltip mouseout event handler
+                var tipMouseout = function(d) {
+                  tooltip.transition()
+                      .duration(300) // ms
+                      .style("opacity", 0); // don't care about position!
+                };
+
+        link = svgNetwork.selectAll(".link")
+            .data(links)
+            .enter()
+            .append("line")
+            .attr("class", "link")
+            .attr('marker-end','url(#end)')
+            .style('stroke','#999')
+            .style("stroke-width", function(d) { return d.WinCount; })
+            .style("stroke-opacity", 0.7)
+        link.append('title')
+        .text(function (d) {return `Player: ${d.source}\nWins Against ${d.target}: ${d.WinCount} \nLosses Against ${d.target}: ${d.LossesCount}`})
+        
+    
+        edgepaths = svgNetwork.selectAll(".edgepath")
+            .data(links)
+            .enter()
+            .append('path')
+            .attrs({
+                'class': 'edgepath',
+                'fill-opacity': 0,
+                'stroke-opacity': 0,
+                'id': function (d, i) {return 'edgepath' + i}
+            })
+            .style("pointer-events", "none");
+
+        edgelabels = svgNetwork.selectAll(".edgelabel")
+            .data(links)
+            .enter()
+            .append('text')
+            .style("pointer-events", "none")
+            .attrs({
+                'class': 'edgelabel',
+                'id': function (d, i) {return 'edgelabel' + i},
+                'font-size': 10,
+                'fill': '#aaa'
+            });
+
+        edgelabels.append('textPath')
+            .attr('xlink:href', function (d, i) {return '#edgepath' + i})
+            .style("text-anchor", "middle")
+            .style("pointer-events", "none")
+            .attr("startOffset", "50%");
+
+        node = svgNetwork.selectAll(".node")
+            .data(nodes)
+            .enter()
+            .append("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+            );
+
+        node.append("circle")
+            .attr("r", function(d){return Math.sqrt(d.size)})
+            .attr('fill',function(d){return colors(d3.select("#selectButtonSurfaceNetworks").node().value)})
+            .on('mouseover.tip',tipMouseoverNodes)
+            .on('mouseout',tipMouseout)
+            .on("mouseover.fade", fade(.1)).on("mouseout.fade", fade(0.8))
+
+
+        node.append("text")
+            .attr("dy", -3)
+            .text(function (d) { return d.id})
+            .attr('opacity',function(d) { if ((d.id=='Roger Federer')||(d.id=='Rafael Nadal')||(d.id=='Novak Djokovic')||(d.id=='Andy Murray')){return 1} else{return 0}})
+            
+        
+
+        simulation
+            .nodes(nodes)
+            .on("tick", ticked)
+            .force("link")
+            .links(links)
+
+        function fade(opacity) {
+
+        return function(d) {
+            
+            node.style("stroke-opacity", function(o) {
+                thisOpacity = neighboring(d,o) ? 1 : opacity;
+                this.setAttribute('fill-opacity', thisOpacity);
+                return thisOpacity;
+            });
+            
+            d3.selectAll(".link").style("opacity",  function(o) {
+                return o.source === d || o.target === d ? 1 : opacity;
+            })
+            
+        };
+    }
+
+    }
+
+    function ticked() {
+        link
+            .attr("x1", function (d) {return d.source.x;})
+            .attr("y1", function (d) {return d.source.y;})
+            .attr("x2", function (d) {return d.target.x;})
+            .attr("y2", function (d) {return d.target.y;});
+
+        node
+            .attr("transform", function (d) {return "translate(" + d.x + ", " + d.y + ")";});
+
+        edgepaths.attr('d', function (d) {
+            return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
+        });
+
+        edgelabels.attr('transform', function (d) {
+            if (d.target.x < d.source.x) {
+                var bbox = this.getBBox();
+
+                rx = bbox.x + bbox.width / 2;
+                ry = bbox.y + bbox.height / 2;
+                return 'rotate(180 ' + rx + ' ' + ry + ')';
+            }
+            else {
+                return 'rotate(0)';
+            }
+        });
+    }
+
+    function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart()
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+
+//    function dragended(d) {
+//        if (!d3.event.active) simulation.alphaTarget(0);
+//        d.fx = undefined;
+//        d.fy = undefined;
+//    }
+// Initialise The Graph
+ d3.json("https://raw.githubusercontent.com/Harvyk94/Datasets/master/h2hNew.json", function (error, graph) {
+        if (error) throw error;
+        update(graph['All'].links, graph['All'].nodes);
+    })
+</script>
+
+
+    <div id="Serves",class='center-div'><div class='text-div'><h2>Serves</h2>
+        <p align=justify>In Tennis, holding serve is one of the most important attributes contributing to a player's win rate. Explore the data for yourself! Hover over a Player to find how who the Player is! </p>
+        <p>For Serves, toggle through the different variables to see how each variable affects the Percentage of Win Rate on Service Games</p>
+        <table>
+  <tr>
+    <th>Selections for X Variable</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>AvgFirstServe</td>
+    <td>The Average First Serve Speed of the Player in KMH</td>
+  </tr>
+  <tr>
+    <td>AvgSecondServe</td>
+    <td>The Average Second Serve Speed of the Player in KMH</td>
+  </tr>
+  <tr>
+    <td>FirstServeIn</td>
+    <td>The Percentage of First Serve that a Player Serves that is considered "In"</td>
+  </tr>
+  <tr>
+    <td>RatioPtsLess4</td>
+    <td>The Percentage of Points Won on Serve with Less than 4 Rallies/Shots Played</td>
+  </tr>
+  <tr>
+    <td>ServeFirstServePointsWon</td>
+    <td>The Percentage of First Serve Points Won by the Player</td>
+  </tr>
+  <tr>
+    <td>ServeSecondServePointsWon</td>
+    <td>The Percentage of Second Serve Points Won by the Player</td>
+  </tr>
+</table>
+    <h3>Big Servers and Big Four</h3>
+
+    <li>John Isner is unbeatable on serve! He has a 92.3% win rate on his service games</li>
+    <li>Federer is the strongest on serve amongst the Big Four with a 90% win rate on his service games</li>
+    <li>Federer is the strongest at winning points with less than 4 shots played, which is highly correlated to service game wins </li>
+    <li>Murray's weakness? A slow second serve!</li></div>
+
+    <!-- Initialize a select button -->
+        <div class='text-div'>
+        <p align="justify">
+            <select id="selectButtonSurface"></select>
+            <select id="selectButtonxAxis"></select>
+        </p>
+        </div>
+
+    </div>
+<script>
+    // set the dimensions and margins of the graph
+var margin = {top: 20, right:40 , bottom: 60, left: 150},
+    width = 800- margin.left - margin.right,
+    height =480- margin.top - margin.bottom;
+// append the svg object to the body of the page
+var svgServe = d3.select("#Serves")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+var svgLegend = d3.select("#Serves")
+  .append("svg")
+    .attr("width", 200)
+    .attr("height", 480)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv("https://raw.githubusercontent.com/Harvyk94/Datasets/master/ServeDataExtra.csv", function(error,data) {
+
+        if (error) {console.log(error)}
+
+        // List of groups (here I have one group per column)
+
+        var surfaces = d3.map(data, function(d){return(d.surface)}).keys()
+        var variables= ['AvgFirstServe','AvgSecondServe','FirstServeIn','RatioPtsLess4','ServeFirstServePointsWon','ServeSecondServePointsWon']
+        var myColor = d3.scaleOrdinal()
+          .domain(surfaces)
+          .range(['#ffa07a','#C83900','#7cfc00','#0297DB']);
+
+    var labeldict = {'AvgFirstServe':'Average First Serve Speed KM/H','AvgSecondServe':'Average Second Serve Speed KM/H','FirstServeIn':'Percentages of First Serves In %','RatioPtsLess4':'Percentage of Points Won on Serve with Less than 4 Rallies/Shots Played','ServeFirstServePointsWon':'Percentages of First Serve Points Won','ServeSecondServePointsWon':'Percentages of Second Serve Points Won'}
+        // add the Surface to the button
+        d3.select("#selectButtonSurface")
+          .selectAll('myOptions')
+            .data(surfaces)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+
+        // add the Variable Selection to the button
+        d3.select("#selectButtonxAxis")
+          .selectAll('myOptions')
+            .data(variables)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+
+
+        // Add X axis
+          var x = d3.scaleLinear()
+        .domain([(d3.min(data, function(d) { return d.AvgFirstServe; }))-(d3.min(data, function(d) { return d.AvgFirstServe; })*0.05), (d3.max(data, function(d) { return d.AvgFirstServe; }))])
+        .range([ 0, width]);
+
+      var x_axis=svgServe.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x).ticks(7));
+
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([d3.min(data, function(d) { return d.WinRatio; })-20, 100])
+        .range([ height, 0]);
+
+      var y_axis= svgServe.append("g")
+                    .call(d3.axisLeft(y));
+        
+    var rad = d3.scaleSqrt().domain([(d3.min(data,function(d){return d.MatchCount})),(d3.max(data,function(d){return d.MatchCount}))])
+                .range([7,20])
+
+    // Add X axis label:
+    var xlab=svgServe.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height + margin.top + 20)
+        .text(function (d){return labeldict['AvgFirstServe']});
+
+    // Y axis label:
+    var ylab= svgServe.append("text")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left+100)
+        .attr("x", -margin.top)
+        .text("Percentage of Service Games Won")
+    
+    var tooltip = d3.select("#Serves").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+        
+    var tootipsurfacedict = {'All': 'All Surfaces', 'Clay':'Clay Surface', 'Grass':'Grass Surface','Hard':"Hard Surface"}
+    // tooltip mouseover event handler
+    var tipMouseover = function(d) {
+        
+      var color = myColor(d.surface);
+      var html  = `Player: ${d.Player}` + "<br/>" +
+                "<span><b>" + `${d.MatchCount} `+ '</b>' +`Matches Played on ${tootipsurfacedict[d.surface]}` + '</span><br/>' +
+                  "<span>" + `Serve Win Rate: ${d.WinRatio} %` + "</span><br/>" +
+                  "<b>" + `${labeldict[d3.select("#selectButtonxAxis").node().value]}: ${d[d3.select("#selectButtonxAxis").node().value]}`;
+
+      tooltip.html(html)
+          .style("left", (d3.event.pageX + 15) + "px")
+          .style("top", (d3.event.pageY - 28) + "px")
+        .transition()
+          .duration(200) // ms
+          .style("opacity", .9) // started as 0!
+
+    };
+    // tooltip mouseout event handler
+    var tipMouseout = function(d) {
+      tooltip.transition()
+          .duration(300) // ms
+          .style("opacity", 0); // don't care about position!
+    };
+
+
+    // Add dots
+      var dots=svgServe.append('g')
+        .selectAll("dot")
+        .data(data.filter(function(d){return d.surface==surfaces[0]}))
+        .enter()
+        .append("circle")
+          .attr("class", "bubbles")
+          .attr("cx", function (d) { return x(d.AvgFirstServe); } )
+          .attr("cy", function (d) { return y(d.WinRatio); } )
+          .attr("r", function (d) { return Math.abs(rad(d.MatchCount))})
+          .style("fill", function (d) { return myColor(d.surface); })
+          .attr('opacity',0.8)
+            // -3- Trigger the functions
+        .on("mouseover", tipMouseover)
+        .on("mouseout", tipMouseout)
+
+
+    // A function that update the chart (For Calling on Surface then X axis)
+        var changesurface=function updateSurface(selectedSurface) {
+          // Create new data with the selection?
+          var dataFilter = data.filter(function(d){return d.surface==selectedSurface})
+          
+            var xvarchange=function xvar(selectedVar){
+                x.domain([(d3.min(dataFilter, function(d) { return d[selectedVar]; }))-(d3.min(dataFilter, function(d) { return d[selectedVar]; })*0.05), (d3.max(dataFilter, function(d) { return d[selectedVar]; }))])
+            x_axis.transition().duration(1000).call(d3.axisBottom(x).ticks(7)); 
+            xlab.transition().duration(1000).text(function (d){return labeldict[selectedVar]})
+          // Give these new data to update dots
+          dots
+              .data(dataFilter)
+              .transition()
+              .duration(1000)
+                .attr("class", "bubbles")
+          .attr("cx", function (d) { return x(d[selectedVar]); } )
+          .attr("cy", function (d) { return y(d.WinRatio); } )
+          .attr("r", function (d) { return rad(d.MatchCount)} )
+          .style("fill", function (d) { return myColor(d.surface); })
+            .on("mouseover", tipMouseover)
+            .on("mouseleave", tipMouseout)
+
+
+            }
+
+        var selectedvar= d3.select("#selectButtonxAxis").node().value
+        xvarchange(selectedvar)
+
+        }
+
+
+    // When the button is changed, run the updateChart function
+    d3.select("#selectButtonSurface").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    changesurface(selectedOption)})
+
+
+
+    // A function that update the chart (For Calling on Surface then X axis)
+    var xvarchange=function xvar(selectedVar){
+          console.log(d3.select("#selectButtonSurface").node().value)
+          var xdata = data.filter(function(d){return d.surface== d3.select("#selectButtonSurface").node().value}) 
+          // Give these new data to update dots
+
+       x.domain([(d3.min(xdata, function(d) { return d[selectedVar]; }))-(d3.min(xdata, function(d) { return d[selectedVar]; })*0.05), (d3.max(data, function(d) { return d[selectedVar]; }))])
+        x_axis.transition().duration(1000).call(d3.axisBottom(x).ticks(7)); 
+        xlab.transition().duration(1000).text(function (d){return labeldict[selectedVar]})
+        dots
+              .data(xdata)
+              .transition()
+              .duration(1000)
+                .attr("class", "bubbles")
+          .attr("cx", function (d) { return x(d[selectedVar]); } )
+          .attr("cy", function (d) { return y(d.WinRatio); } )
+          .attr("r", function (d) { return rad(d.MatchCount)} )
+          .style("fill", function (d) { return myColor(d.surface); })
+
+    }      
+
+    d3.select("#selectButtonxAxis").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    xvarchange(selectedOption)})
+
+     });
+d3.csv("https://raw.githubusercontent.com/Harvyk94/Datasets/master/ServeDataExtra.csv", function(error,data) {
+        var surfaces = d3.map(data, function(d){return(d.surface)}).keys()
+        var myColor = d3.scaleOrdinal()
+          .domain(surfaces)
+          .range(['#ffa07a','#C83900','#7cfc00','#0297DB']);
+        var legendHolder = svgLegend.append('g')
+        // translate the holder to the right side of the graph
+         .attr('transform', "translate(" + (margin.right + width) + ",0)")
+        var legend =legendHolder.selectAll(".legend")
+            .data(d3.map(data, function(d){return(d.surface)}).keys())
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+            legend.append("text")
+                  .attr("x", -630)
+                  .attr("y", 0)
+                  .attr('font-size',"20")
+                  .attr("dy", ".35em")
+                  .style("text-anchor", "end")
+                  .text(function(d) { return d; });
+
+            legend.append("circle")
+                  .attr("cx", -700)
+                  .attr('cy', 0)
+                  .attr("r",9)
+                  .style("fill", myColor);
+
+ var size = d3.scaleSqrt()
+ .domain([(d3.min(data,function(d){return d.MatchCount})),(d3.max(data,function(d){return d.MatchCount}))])
+                .range([7,20])
+
+// Add legend: circles
+var valuesToShow = [10, 50, 130]
+var xCircle = -20
+var xLabel = 30
+var yCircle = 140
+svgLegend
+  .selectAll("legend")
+  .data(valuesToShow)
+  .enter()
+  .append("circle")
+    .attr("cx", xCircle)
+    .attr("cy", function(d){ return yCircle - size(d) } )
+    .attr("r", function(d){ return size(d) })
+    .style("fill", "none")
+    .attr("stroke", "black")
+
+// Add legend: segments
+svgLegend
+  .selectAll("legend")
+  .data(valuesToShow)
+  .enter()
+  .append("line")
+    .attr('x1', function(d){ return xCircle + size(d) } )
+    .attr('x2', xLabel)
+    .attr('y1', function(d){ return yCircle - size(d) } )
+    .attr('y2', function(d){ return yCircle - size(d) } )
+    .attr('stroke', 'black')
+    .style('stroke-dasharray', ('2,2'))
+
+// Add legend: labels
+svgLegend
+  .selectAll("legend")
+  .data(valuesToShow)
+  .enter()
+  .append("text")
+    .attr('x', xLabel)
+    .attr('y', function(d){ return yCircle - size(d) } )
+    .text( function(d){ return d } )
+    .style("font-size", 10)
+    .attr('alignment-baseline', 'middle')
+/*// Add X axis
+var x = d3.scaleBand()
+  .range([ 0, 50 ])
+  .domain(['Y'])
+var x_axis=svgLegend.append("g")
+  .attr("transform", "translate(0," + 300 + ")")
+  .call(d3.axisBottom(x))
+var y = d3.scaleLinear()
+    .domain([-30,30])
+    .range([ 200, 0]);
+var y_axis=svgLegend.append("g")
+  .attr("transform", "translate(" + 0 + "," + 200+ ")")
+  .call(d3.axisLeft(y));
+var ylab= svgLegend.append("text")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left+30)
+        .attr("x", -margin.top-210)
+        .text("Percentage Change %")
+    
+//On Surface Change: Find Percentage Difference of  y if possible x:
+//initialise the bar chart   
+function percentagechange(selectedSurface){
+    var currentsurface= d3.select("#selectButtonSurface").node().value
+    var existingdataFilter = data.filter(function(d){return d.surface==currentsurface})
+    var PreviousAvg = d3.mean(existingdataFilter, function(d) { return d.WinRatio; })
+    var NewdataFilter = data.filter(function(d){return d.surface==selectedSurface})
+    var NewAvg = d3.mean(NewdataFilter, function(d) { return d.WinRatio; })
+    var PercentageChange = ((NewAvg-PreviousAvg)/PreviousAvg)*100
+    var percent= [{group: 'y', value: PercentageChange}]
+    console.log(percent)
+    var refresh=function update(percent) {
+        var u = svgLegend.selectAll("rect")
+        u
+    .enter()
+    .append("rect")
+    .merge(u)
+    .transition()
+    .duration(1000)
+      .attr("x", function(d) { return x(d.group); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.value); })
+      .attr("fill", "#69b3a2")
+        }
+    refresh(percent)
+}
+ d3.select("#selectButtonxAxis").on("change.percent", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    percentagechange(selectedOption)})*/
+})
+
+</script>
+<div id="Returns",class='center-div'><div class='text-div'><h2>Returns</h2>
+
+            <p align=justify>In Tennis, the other aspect of the game is Returning. Explore the data for yourself! Hover over a Player to find how who the Player is! Toggle through the different variables to see how each variable affects the Percentage of Win Rate on Returns Games</p>
+          <table>
+  <tr>
+    <th>Selections for X Variable</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>DeepReturnsRatio</td>
+    <td>Percentages of Serves Returned Deep to the other side of the court</td>
+  </tr>
+  <tr>
+    <td>ReturnsFirstServe</td>
+    <td>Percentages of Points Won on  Returning First Serve</td>
+  </tr>
+  <tr>
+    <td>ReturnsSecondServe</td>
+    <td>Percentages of Points Won on  Returning Second Serve</td>
+  </tr>
+    </table>
+    <h3>Big Returns and Big Four</h3>
+
+    <li>Rafael Nadal and Djokovic are <b>THE BEST</b> on returns, winning around 35% of opponents service games while returning. </li>
+    <li>Murray , Djokovic and Nadal capitalises heavily on opponnents second serves, winning them 50% of the time. </li>
+    <li>Federer is the weakest on returns amongst the Big Four</li></div>
+    
+
+    <!-- Initialize a select button -->
+        <style>
+
+select {
+  display: inline-block;
+    margin: 0 auto;
+}
+            svg {
+    display: inline-block;
+    margin: 0 auto;
+}
+            </style>
+        <div class='text-div'>
+        <p align="justify">
+            <select id="selectButtonSurfaceReturns"></select>
+            <select id="selectButtonxAxisReturns"></select>
+        </p>
+    </div>
+    </div>
+<script>
+    // set the dimensions and margins of the graph
+var margin = {top: 20, right:40 , bottom: 60, left: 150},
+    width = 800- margin.left - margin.right,
+    height =480- margin.top - margin.bottom;
+// append the svg object to the body of the page
+var svgReturns = d3.select("#Returns")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+var svgLegendReturns = d3.select("#Returns")
+  .append("svg")
+    .attr("width", 200)
+    .attr("height", 480)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv("https://raw.githubusercontent.com/Harvyk94/Datasets/master/ReturnsData.csv", function(error,data) {
+
+         
+    if (error) {console.log(error)}
+    
+    // List of groups (here I have one group per column)
+    var labeldict = {'DeepReturnsRatio':'Percentages of Deep Returns Made ','ReturnsFirstServe':'Percentages of Points Won Returning First Serves','ReturnsSecondServe':'Percentages of Points Won Returning Second Serves '}
+    var surfaces = d3.map(data, function(d){return(d.surface)}).keys()
+    var variables= ['DeepReturnsRatio','ReturnsFirstServe','ReturnsSecondServe']
+    var myColor = d3.scaleOrdinal()
+      .domain(surfaces)
+      .range(['#ffa07a','#C83900','#7cfc00','#0297DB']);
+
+        // add the Surface to the button
+        d3.select("#selectButtonSurfaceReturns")
+          .selectAll('myOptions')
+            .data(surfaces)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+
+        // add the Variable Selection to the button
+        d3.select("#selectButtonxAxisReturns")
+          .selectAll('myOptions')
+            .data(variables)
+          .enter()
+            .append('option')
+          .text(function (d) { return d; }) // text showed in the menu
+
+
+        // Add X axis
+          var x = d3.scaleLinear()
+        .domain([(d3.min(data, function(d) { return d.DeepReturnsRatio; }))-(d3.min(data, function(d) { return d.DeepReturnsRatio; })*0.05), (d3.max(data, function(d) { return d.DeepReturnsRatio; }))])
+        .range([ 0, width]);
+
+      var x_axis=svgReturns.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x).ticks(7));
+
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 60])
+        .range([ height, 0]);
+
+      var y_axis= svgReturns.append("g")
+                    .call(d3.axisLeft(y));
+        
+    var rad = d3.scaleSqrt().domain([(d3.min(data,function(d){return d.MatchCount})),(d3.max(data,function(d){return d.MatchCount}))])
+                .range([7,20])
+
+    // Add X axis label:
+    var xlab=svgReturns.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height + margin.top + 20)
+        .text(function (d){return labeldict['DeepReturnsRatio']});
+
+    // Y axis label:
+    var ylab= svgReturns.append("text")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left+100)
+        .attr("x", -margin.top)
+        .text("Percentage of Return Games Won")
+    
+    var tooltip = d3.select("#Returns").append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
+        
+    var tootipsurfacedict = {'All': 'All Surfaces', 'Clay':'Clay Surface', 'Grass':'Grass Surface','Hard':"Hard Surface"}
+    // tooltip mouseover event handler
+    var tipMouseover = function(d) {
+        
+      var color = myColor(d.surface);
+      var html  = `Player: ${d.Player}` + "<br/>" +
+                "<span>" + `${d.MatchCount} Matches Played on ${tootipsurfacedict[d.surface]}` + '</span><br/>' +
+                  "<span>" + `Serve Win Rate: ${d.WinRatio} %` + "</span><br/>" +
+                  "<b>" + `${labeldict[d3.select("#selectButtonxAxisReturns").node().value]}: ${d[d3.select("#selectButtonxAxisReturns").node().value]}`;
+
+      tooltip.html(html)
+          .style("left", (d3.event.pageX + 15) + "px")
+          .style("top", (d3.event.pageY - 28) + "px")
+        .transition()
+          .duration(200) // ms
+          .style("opacity", .9) // started as 0!
+
+    };
+    // tooltip mouseout event handler
+    var tipMouseout = function(d) {
+      tooltip.transition()
+          .duration(300) // ms
+          .style("opacity", 0); // don't care about position!
+    };
+
+
+    // Add dots
+      var dots=svgReturns.append('g')
+        .selectAll("dot")
+        .data(data.filter(function(d){return d.surface==surfaces[0]}))
+        .enter()
+        .append("circle")
+          .attr("class", "bubbles")
+          .attr("cx", function (d) { return x(d.DeepReturnsRatio);} )
+          .attr("cy", function (d) { return y(d.WinRatio); } )
+          .attr("r", function (d) { return Math.abs(rad(d.MatchCount))})
+          .style("fill", function (d) { return myColor(d.surface); })
+          .attr('opacity',0.8)
+            // -3- Trigger the functions
+        .on("mouseover", tipMouseover)
+        .on("mouseout", tipMouseout)
+
+
+    // A function that update the chart (For Calling on Surface then X axis)
+        var changesurface=function updateSurface(selectedSurface) {
+          // Create new data with the selection?
+          var dataFilter = data.filter(function(d){return d.surface==selectedSurface})
+          
+            var xvarchange=function xvar(selectedVar){
+                x.domain([(d3.min(dataFilter, function(d) { return d[selectedVar]; }))-(d3.min(dataFilter, function(d) { return d[selectedVar]; })*0.05), (d3.max(dataFilter, function(d) { return d[selectedVar]; }))])
+            x_axis.transition().duration(1000).call(d3.axisBottom(x).ticks(7)); 
+            xlab.transition().duration(1000).text(function (d){return labeldict[selectedVar]})
+          // Give these new data to update dots
+          dots
+              .data(dataFilter)
+              .transition()
+              .duration(1000)
+                .attr("class", "bubbles")
+          .attr("cx", function (d) { return x(d[selectedVar]); } )
+          .attr("cy", function (d) { return y(d.WinRatio); } )
+          .attr("r", function (d) { return rad(d.MatchCount)} )
+          .style("fill", function (d) { return myColor(d.surface); })
+            .on("mouseover", showTooltip )
+            .on("mouseleave", hideTooltip )
+
+
+            }
+
+        var selectedvar= d3.select("#selectButtonxAxisReturns").node().value
+        xvarchange(selectedvar)
+
+        }
+
+
+    // When the button is changed, run the updateChart function
+    d3.select("#selectButtonSurfaceReturns").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    changesurface(selectedOption)})
+
+
+
+    // A function that update the chart (For Calling on Surface then X axis)
+    var xvarchange=function xvar(selectedVar){
+          console.log(d3.select("#selectButtonSurfaceReturns").node().value)
+          var xdata = data.filter(function(d){return d.surface== d3.select("#selectButtonSurfaceReturns").node().value}) 
+          // Give these new data to update dots
+
+       x.domain([(d3.min(xdata, function(d) { return d[selectedVar]; }))-(d3.min(xdata, function(d) { return d[selectedVar]; })*0.05), (d3.max(data, function(d) { return d[selectedVar]; }))])
+        x_axis.transition().duration(1000).call(d3.axisBottom(x).ticks(7)); 
+        xlab.transition().duration(1000).text(function (d){return labeldict[selectedVar]})
+        dots
+              .data(xdata)
+              .transition()
+              .duration(1000)
+                .attr("class", "bubbles")
+          .attr("cx", function (d) { return x(d[selectedVar]); } )
+          .attr("cy", function (d) { return y(d.WinRatio); } )
+          .attr("r", function (d) { return rad(d.MatchCount)} )
+          .style("fill", function (d) { return myColor(d.surface); })
+
+    }      
+
+    d3.select("#selectButtonxAxisReturns").on("change", function(d) {
+    // recover the option that has been chosen
+    var selectedOption = d3.select(this).property("value")
+    // run the updateChart function with this selected option
+    xvarchange(selectedOption)})
+
+     });
+    
+    
+    
+d3.csv("https://raw.githubusercontent.com/Harvyk94/Datasets/master/ReturnsData.csv", function(error,data) {
+        var surfaces = d3.map(data, function(d){return(d.surface)}).keys()
+        var myColor = d3.scaleOrdinal()
+          .domain(surfaces)
+          .range(['#ffa07a','#C83900','#7cfc00','#0297DB']);
+        var legendHolder = svgLegendReturns.append('g')
+        // translate the holder to the right side of the graph
+         .attr('transform', "translate(" + (margin.right + width) + ",0)")
+        var legend =legendHolder.selectAll(".legend")
+            .data(d3.map(data, function(d){return(d.surface)}).keys())
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+            legend.append("text")
+                  .attr("x", -630)
+                  .attr("y", 0)
+                  .attr('font-size',"20")
+                  .attr("dy", ".35em")
+                  .style("text-anchor", "end")
+                  .text(function(d) { return d; });
+
+            legend.append("circle")
+                  .attr("cx", -700)
+                  .attr('cy', 0)
+                  .attr("r",9)
+                  .style("fill", myColor);
+
+ var size = d3.scaleSqrt()
+ .domain([(d3.min(data,function(d){return d.MatchCount})),(d3.max(data,function(d){return d.MatchCount}))])
+                .range([7,20])
+
+// Add legend: circles
+var valuesToShow = [10, 50, 130]
+var xCircle = -20
+var xLabel = 30
+var yCircle = 140
+svgLegendReturns
+  .selectAll("legend")
+  .data(valuesToShow)
+  .enter()
+  .append("circle")
+    .attr("cx", xCircle)
+    .attr("cy", function(d){ return yCircle - size(d) } )
+    .attr("r", function(d){ return size(d) })
+    .style("fill", "none")
+    .attr("stroke", "black")
+
+// Add legend: segments
+svgLegendReturns
+  .selectAll("legend")
+  .data(valuesToShow)
+  .enter()
+  .append("line")
+    .attr('x1', function(d){ return xCircle + size(d) } )
+    .attr('x2', xLabel)
+    .attr('y1', function(d){ return yCircle - size(d) } )
+    .attr('y2', function(d){ return yCircle - size(d) } )
+    .attr('stroke', 'black')
+    .style('stroke-dasharray', ('2,2'))
+
+// Add legend: labels
+svgLegendReturns
+  .selectAll("legend")
+  .data(valuesToShow)
+  .enter()
+  .append("text")
+    .attr('x', xLabel)
+    .attr('y', function(d){ return yCircle - size(d) } )
+    .text( function(d){ return d } )
+    .style("font-size", 10)
+    .attr('alignment-baseline', 'middle')
+})
+
+//On Surface Change: Find Percentage Difference
+</script>
+    </div><div class=center-div><div class='text-div'><h2>Summary</h2><p align='justify'>Within the Big Four the comparison of different aspects of the game shows a difference in playstyle and respective strengths and weaknesses. While Nadal and Djokovic dominate on returns, Federer dominates on serves. Murray dominates returns games, but his serve games is under suspect. Nonetheless, Murray continues to dominate the rest of the competition, as shown with his 11 final appearances since the 2005 Australian Open.</p><p align='justify'>
+While there are specialists in each aspect of the game (Serves, Returns). The Big Four shows dominance in all aspects of the game and most importantly show no clear weaknesses in all aspects of the game when compared to the rest of the men’s tour in Grand Slam Competitions. Take Ivo Karlovic and John Isner for example, two players that have the strongest serves on tour, but have a glaring weakness in their return games. Potentially costing them match wins. However, the Big Four almost have no glaring weaknesses that a player might be able to exploit. This explains their complete dominance of Grand Slam tournaments in the Open Era.
+    
+</p></div></div><div class=center-div><div class='text-div'>
+<br><br><br><h2 align='center'>Acknowledgements</h2>    <p align='center',style="font-size:10px">This data was obtained from <a href="https://github.com/JeffSackmann/tennis_slam_pointbypoint">Jeff Sackman's GitHub</a> and the data was wrangled for this project. Information was extracted from Wikipedia. The visualisations were done using D3.</p></div></div>
+</html>

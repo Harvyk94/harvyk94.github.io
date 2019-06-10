@@ -1,0 +1,1446 @@
+{
+    "All": {
+        "nodes": [
+            {
+                "id": "Adrian Mannarino",
+                "size": 40,
+                "surface": "All"
+            },
+            {
+                "id": "Andreas Seppi",
+                "size": 48,
+                "surface": "All"
+            },
+            {
+                "id": "Andy Murray",
+                "size": 154,
+                "surface": "All"
+            },
+            {
+                "id": "Bernard Tomic",
+                "size": 62,
+                "surface": "All"
+            },
+            {
+                "id": "David Ferrer",
+                "size": 109,
+                "surface": "All"
+            },
+            {
+                "id": "David Goffin",
+                "size": 54,
+                "surface": "All"
+            },
+            {
+                "id": "Dominic Thiem",
+                "size": 51,
+                "surface": "All"
+            },
+            {
+                "id": "Fabio Fognini",
+                "size": 51,
+                "surface": "All"
+            },
+            {
+                "id": "Feliciano Lopez",
+                "size": 59,
+                "surface": "All"
+            },
+            {
+                "id": "Fernando Verdasco",
+                "size": 60,
+                "surface": "All"
+            },
+            {
+                "id": "Gael Monfils",
+                "size": 77,
+                "surface": "All"
+            },
+            {
+                "id": "Gilles Muller",
+                "size": 31,
+                "surface": "All"
+            },
+            {
+                "id": "Gilles Simon",
+                "size": 74,
+                "surface": "All"
+            },
+            {
+                "id": "Grigor Dimitrov",
+                "size": 64,
+                "surface": "All"
+            },
+            {
+                "id": "Ivo Karlovic",
+                "size": 32,
+                "surface": "All"
+            },
+            {
+                "id": "Jeremy Chardy",
+                "size": 49,
+                "surface": "All"
+            },
+            {
+                "id": "Jo Wilfried Tsonga",
+                "size": 103,
+                "surface": "All"
+            },
+            {
+                "id": "Joao Sousa",
+                "size": 26,
+                "surface": "All"
+            },
+            {
+                "id": "John Isner",
+                "size": 81,
+                "surface": "All"
+            },
+            {
+                "id": "Juan Martin Del Potro",
+                "size": 73,
+                "surface": "All"
+            },
+            {
+                "id": "Kei Nishikori",
+                "size": 92,
+                "surface": "All"
+            },
+            {
+                "id": "Kevin Anderson",
+                "size": 75,
+                "surface": "All"
+            },
+            {
+                "id": "Marcel Granollers",
+                "size": 34,
+                "surface": "All"
+            },
+            {
+                "id": "Marcos Baghdatis",
+                "size": 51,
+                "surface": "All"
+            },
+            {
+                "id": "Marin Cilic",
+                "size": 91,
+                "surface": "All"
+            },
+            {
+                "id": "Mikhail Youzhny",
+                "size": 42,
+                "surface": "All"
+            },
+            {
+                "id": "Milos Raonic",
+                "size": 93,
+                "surface": "All"
+            },
+            {
+                "id": "Nick Kyrgios",
+                "size": 50,
+                "surface": "All"
+            },
+            {
+                "id": "Novak Djokovic",
+                "size": 181,
+                "surface": "All"
+            },
+            {
+                "id": "Philipp Kohlschreiber",
+                "size": 55,
+                "surface": "All"
+            },
+            {
+                "id": "Rafael Nadal",
+                "size": 132,
+                "surface": "All"
+            },
+            {
+                "id": "Richard Gasquet",
+                "size": 93,
+                "surface": "All"
+            },
+            {
+                "id": "Roberto Bautista Agut",
+                "size": 44,
+                "surface": "All"
+            },
+            {
+                "id": "Robin Haase",
+                "size": 32,
+                "surface": "All"
+            },
+            {
+                "id": "Roger Federer",
+                "size": 148,
+                "surface": "All"
+            },
+            {
+                "id": "Ryan Harrison",
+                "size": 29,
+                "surface": "All"
+            },
+            {
+                "id": "Stanislas Wawrinka",
+                "size": 113,
+                "surface": "All"
+            },
+            {
+                "id": "Tomas Berdych",
+                "size": 108,
+                "surface": "All"
+            },
+            {
+                "id": "Tommy Robredo",
+                "size": 35,
+                "surface": "All"
+            }
+        ],
+        "links": [
+            {
+                "source": "Novak Djokovic",
+                "target": "Andy Murray",
+                "WinCount": 8,
+                "LossesCount": 2,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Roger Federer",
+                "WinCount": 7,
+                "LossesCount": 2,
+                "surface": "All"
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "Kevin Anderson",
+                "WinCount": 5,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Rafael Nadal",
+                "WinCount": 5,
+                "LossesCount": 4,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Stanislas Wawrinka",
+                "WinCount": 5,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Jo Wilfried Tsonga",
+                "WinCount": 5,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Joao Sousa",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Richard Gasquet",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Juan Martin Del Potro",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Andy Murray",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Tomas Berdych",
+                "WinCount": 4,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Robin Haase",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "David Ferrer",
+                "WinCount": 4,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Feliciano Lopez",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Joao Sousa",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Marin Cilic",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "David Ferrer",
+                "WinCount": 4,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Nick Kyrgios",
+                "WinCount": 4,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Stanislas Wawrinka",
+                "WinCount": 4,
+                "LossesCount": 3,
+                "surface": "All"
+            },
+            {
+                "source": "David Ferrer",
+                "target": "Kevin Anderson",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Ivo Karlovic",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "Ryan Harrison",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Milos Raonic",
+                "target": "Gilles Simon",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Tomas Berdych",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "David Ferrer",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Andy Murray",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Juan Martin Del Potro",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Jo Wilfried Tsonga",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Richard Gasquet",
+                "target": "Marcel Granollers",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Jo Wilfried Tsonga",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Milos Raonic",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Tomas Berdych",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Gilles Simon",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Marin Cilic",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Kei Nishikori",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Richard Gasquet",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Philipp Kohlschreiber",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Roger Federer",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Mikhail Youzhny",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Adrian Mannarino",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Jo Wilfried Tsonga",
+                "WinCount": 3,
+                "LossesCount": 2,
+                "surface": "All"
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Dominic Thiem",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Grigor Dimitrov",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Gael Monfils",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "David Ferrer",
+                "target": "Richard Gasquet",
+                "WinCount": 3,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Philipp Kohlschreiber",
+                "target": "John Isner",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Andreas Seppi",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Marcel Granollers",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Gael Monfils",
+                "target": "Richard Gasquet",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "Bernard Tomic",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Kevin Anderson",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "David Ferrer",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Jeremy Chardy",
+                "WinCount": 3,
+                "LossesCount": 0,
+                "surface": "All"
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Gilles Muller",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Grigor Dimitrov",
+                "target": "Jeremy Chardy",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Grigor Dimitrov",
+                "target": "Marcos Baghdatis",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Grigor Dimitrov",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Fernando Verdasco",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Andy Murray",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Juan Martin Del Potro",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "David Ferrer",
+                "target": "Feliciano Lopez",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Kei Nishikori",
+                "target": "Jo Wilfried Tsonga",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Feliciano Lopez",
+                "target": "Fabio Fognini",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Marin Cilic",
+                "target": "Kei Nishikori",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Richard Gasquet",
+                "target": "Nick Kyrgios",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Feliciano Lopez",
+                "target": "John Isner",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Richard Gasquet",
+                "target": "Grigor Dimitrov",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Juan Martin Del Potro",
+                "target": "David Ferrer",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "David Goffin",
+                "target": "Dominic Thiem",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Milos Raonic",
+                "target": "Nick Kyrgios",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Tommy Robredo",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Kei Nishikori",
+                "target": "Fernando Verdasco",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "David Ferrer",
+                "target": "Roberto Bautista Agut",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Milos Raonic",
+                "target": "Feliciano Lopez",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Andy Murray",
+                "target": "Kei Nishikori",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Kei Nishikori",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Richard Gasquet",
+                "target": "Bernard Tomic",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Juan Martin Del Potro",
+                "target": "Gilles Simon",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            },
+            {
+                "source": "Nick Kyrgios",
+                "target": "Andreas Seppi",
+                "WinCount": 2,
+                "LossesCount": 1,
+                "surface": "All"
+            }
+        ]
+    },
+    "Clay": {
+        "nodes": [
+            {
+                "surface": "Clay",
+                "id": "Andy Murray",
+                "size": 35
+            },
+            {
+                "surface": "Clay",
+                "id": "David Ferrer",
+                "size": 30
+            },
+            {
+                "surface": "Clay",
+                "id": "Dominic Thiem",
+                "size": 16
+            },
+            {
+                "surface": "Clay",
+                "id": "Feliciano Lopez",
+                "size": 11
+            },
+            {
+                "surface": "Clay",
+                "id": "Jo Wilfried Tsonga",
+                "size": 27
+            },
+            {
+                "surface": "Clay",
+                "id": "Novak Djokovic",
+                "size": 43
+            },
+            {
+                "surface": "Clay",
+                "id": "Rafael Nadal",
+                "size": 41
+            },
+            {
+                "surface": "Clay",
+                "id": "Roger Federer",
+                "size": 27
+            },
+            {
+                "surface": "Clay",
+                "id": "Stanislas Wawrinka",
+                "size": 32
+            }
+        ],
+        "links": [
+            {
+                "source": "Rafael Nadal",
+                "target": "Novak Djokovic",
+                "surface": "Clay",
+                "WinCount": 3,
+                "LossesCount": 1
+            },
+            {
+                "source": "Feliciano Lopez",
+                "target": "David Ferrer",
+                "surface": "Clay",
+                "WinCount": 1,
+                "LossesCount": 2
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Jo Wilfried Tsonga",
+                "surface": "Clay",
+                "WinCount": 2,
+                "LossesCount": 1
+            },
+            {
+                "source": "David Ferrer",
+                "target": "Andy Murray",
+                "surface": "Clay",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Andy Murray",
+                "surface": "Clay",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Dominic Thiem",
+                "surface": "Clay",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Novak Djokovic",
+                "surface": "Clay",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Roger Federer",
+                "surface": "Clay",
+                "WinCount": 1,
+                "LossesCount": 1
+            }
+        ]
+    },
+    "Grass": {
+        "nodes": [
+            {
+                "surface": "Grass",
+                "id": "Adrian Mannarino",
+                "size": 16
+            },
+            {
+                "surface": "Grass",
+                "id": "David Ferrer",
+                "size": 22
+            },
+            {
+                "surface": "Grass",
+                "id": "Gael Monfils",
+                "size": 14
+            },
+            {
+                "surface": "Grass",
+                "id": "Gilles Muller",
+                "size": 14
+            },
+            {
+                "surface": "Grass",
+                "id": "Grigor Dimitrov",
+                "size": 22
+            },
+            {
+                "surface": "Grass",
+                "id": "Jo Wilfried Tsonga",
+                "size": 28
+            },
+            {
+                "surface": "Grass",
+                "id": "Juan Martin Del Potro",
+                "size": 24
+            },
+            {
+                "surface": "Grass",
+                "id": "Marcos Baghdatis",
+                "size": 16
+            },
+            {
+                "surface": "Grass",
+                "id": "Milos Raonic",
+                "size": 30
+            },
+            {
+                "surface": "Grass",
+                "id": "Nick Kyrgios",
+                "size": 17
+            },
+            {
+                "surface": "Grass",
+                "id": "Novak Djokovic",
+                "size": 49
+            },
+            {
+                "surface": "Grass",
+                "id": "Rafael Nadal",
+                "size": 25
+            },
+            {
+                "surface": "Grass",
+                "id": "Richard Gasquet",
+                "size": 22
+            },
+            {
+                "surface": "Grass",
+                "id": "Roger Federer",
+                "size": 46
+            },
+            {
+                "surface": "Grass",
+                "id": "Sam Querrey",
+                "size": 21
+            },
+            {
+                "surface": "Grass",
+                "id": "Steve Johnson",
+                "size": 11
+            },
+            {
+                "surface": "Grass",
+                "id": "Tomas Berdych",
+                "size": 28
+            }
+        ],
+        "links": [
+            {
+                "source": "Roger Federer",
+                "target": "Novak Djokovic",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 2
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Milos Raonic",
+                "surface": "Grass",
+                "WinCount": 2,
+                "LossesCount": 1
+            },
+            {
+                "source": "Gael Monfils",
+                "target": "Adrian Mannarino",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Juan Martin Del Potro",
+                "target": "David Ferrer",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Gilles Muller",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Marcos Baghdatis",
+                "target": "Grigor Dimitrov",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Steve Johnson",
+                "target": "Grigor Dimitrov",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Sam Querrey",
+                "target": "Jo Wilfried Tsonga",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Nick Kyrgios",
+                "target": "Milos Raonic",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Sam Querrey",
+                "target": "Milos Raonic",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Richard Gasquet",
+                "target": "Nick Kyrgios",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "Novak Djokovic",
+                "surface": "Grass",
+                "WinCount": 1,
+                "LossesCount": 1
+            }
+        ]
+    },
+    "Hard": {
+        "nodes": [
+            {
+                "surface": "Hard",
+                "id": "Andreas Seppi",
+                "size": 25
+            },
+            {
+                "surface": "Hard",
+                "id": "Andy Murray",
+                "size": 76
+            },
+            {
+                "surface": "Hard",
+                "id": "David Ferrer",
+                "size": 57
+            },
+            {
+                "surface": "Hard",
+                "id": "Denis Istomin",
+                "size": 15
+            },
+            {
+                "surface": "Hard",
+                "id": "Dominic Thiem",
+                "size": 25
+            },
+            {
+                "surface": "Hard",
+                "id": "Donald Young",
+                "size": 23
+            },
+            {
+                "surface": "Hard",
+                "id": "Fabio Fognini",
+                "size": 20
+            },
+            {
+                "surface": "Hard",
+                "id": "Feliciano Lopez",
+                "size": 31
+            },
+            {
+                "surface": "Hard",
+                "id": "Gilles Simon",
+                "size": 32
+            },
+            {
+                "surface": "Hard",
+                "id": "Jeremy Chardy",
+                "size": 20
+            },
+            {
+                "surface": "Hard",
+                "id": "John Isner",
+                "size": 43
+            },
+            {
+                "surface": "Hard",
+                "id": "Juan Martin Del Potro",
+                "size": 39
+            },
+            {
+                "surface": "Hard",
+                "id": "Julien Benneteau",
+                "size": 18
+            },
+            {
+                "surface": "Hard",
+                "id": "Kei Nishikori",
+                "size": 52
+            },
+            {
+                "surface": "Hard",
+                "id": "Kevin Anderson",
+                "size": 36
+            },
+            {
+                "surface": "Hard",
+                "id": "Kyle Edmund",
+                "size": 11
+            },
+            {
+                "surface": "Hard",
+                "id": "Marin Cilic",
+                "size": 44
+            },
+            {
+                "surface": "Hard",
+                "id": "Mikhail Youzhny",
+                "size": 14
+            },
+            {
+                "surface": "Hard",
+                "id": "Milos Raonic",
+                "size": 46
+            },
+            {
+                "surface": "Hard",
+                "id": "Nick Kyrgios",
+                "size": 24
+            },
+            {
+                "surface": "Hard",
+                "id": "Nicolas Almagro",
+                "size": 23
+            },
+            {
+                "surface": "Hard",
+                "id": "Novak Djokovic",
+                "size": 89
+            },
+            {
+                "surface": "Hard",
+                "id": "Rafael Nadal",
+                "size": 66
+            },
+            {
+                "surface": "Hard",
+                "id": "Richard Gasquet",
+                "size": 45
+            },
+            {
+                "surface": "Hard",
+                "id": "Roberto Bautista Agut",
+                "size": 20
+            },
+            {
+                "surface": "Hard",
+                "id": "Roger Federer",
+                "size": 75
+            },
+            {
+                "surface": "Hard",
+                "id": "Stanislas Wawrinka",
+                "size": 63
+            },
+            {
+                "surface": "Hard",
+                "id": "Steve Johnson",
+                "size": 19
+            },
+            {
+                "surface": "Hard",
+                "id": "Tomas Berdych",
+                "size": 59
+            },
+            {
+                "surface": "Hard",
+                "id": "Tommy Robredo",
+                "size": 19
+            }
+        ],
+        "links": [
+            {
+                "source": "Novak Djokovic",
+                "target": "Andy Murray",
+                "surface": "Hard",
+                "WinCount": 6,
+                "LossesCount": 1
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Novak Djokovic",
+                "surface": "Hard",
+                "WinCount": 2,
+                "LossesCount": 4
+            },
+            {
+                "source": "Richard Gasquet",
+                "target": "David Ferrer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 2
+            },
+            {
+                "source": "Milos Raonic",
+                "target": "Feliciano Lopez",
+                "surface": "Hard",
+                "WinCount": 2,
+                "LossesCount": 1
+            },
+            {
+                "source": "Nick Kyrgios",
+                "target": "Andreas Seppi",
+                "surface": "Hard",
+                "WinCount": 2,
+                "LossesCount": 1
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Kei Nishikori",
+                "surface": "Hard",
+                "WinCount": 2,
+                "LossesCount": 1
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Novak Djokovic",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 2
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Rafael Nadal",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 2
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "Roger Federer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 2
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Kei Nishikori",
+                "surface": "Hard",
+                "WinCount": 2,
+                "LossesCount": 1
+            },
+            {
+                "source": "Denis Istomin",
+                "target": "Andreas Seppi",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Jeremy Chardy",
+                "target": "Andreas Seppi",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Kei Nishikori",
+                "target": "Andy Murray",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Andy Murray",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Gilles Simon",
+                "target": "David Ferrer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Jeremy Chardy",
+                "target": "David Ferrer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Kei Nishikori",
+                "target": "David Ferrer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "David Ferrer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Roberto Bautista Agut",
+                "target": "David Ferrer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Denis Istomin",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Kevin Anderson",
+                "target": "Dominic Thiem",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Stanislas Wawrinka",
+                "target": "Donald Young",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Feliciano Lopez",
+                "target": "Fabio Fognini",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "John Isner",
+                "target": "Feliciano Lopez",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Rafael Nadal",
+                "target": "Juan Martin Del Potro",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Roberto Bautista Agut",
+                "target": "Juan Martin Del Potro",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Juan Martin Del Potro",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Nicolas Almagro",
+                "target": "Julien Benneteau",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Marin Cilic",
+                "target": "Kei Nishikori",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Steve Johnson",
+                "target": "Kyle Edmund",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Roger Federer",
+                "target": "Marin Cilic",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Novak Djokovic",
+                "target": "Mikhail Youzhny",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Steve Johnson",
+                "target": "Nicolas Almagro",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "Rafael Nadal",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Tomas Berdych",
+                "target": "Richard Gasquet",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            },
+            {
+                "source": "Tommy Robredo",
+                "target": "Roger Federer",
+                "surface": "Hard",
+                "WinCount": 1,
+                "LossesCount": 1
+            }
+        ]
+    }
+}
